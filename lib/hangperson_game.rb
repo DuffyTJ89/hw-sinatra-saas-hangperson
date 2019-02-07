@@ -30,23 +30,23 @@ class HangpersonGame
     }
   end
   
-  def guessing(guess)
+  def guess(a)
     
-    if (guess=='' || guess== NIL) #check if an empty word is entered if so disallow it
+    if (a=='' || a== NIL) #check if an empty word is entered if so disallow it
       raise ArgumentError, "No word entered"
     end
     
-    if (guess.match(/[^A-Za-z]/)) # check if the user has entered a number, if so disallow it. 
+    if (a.match(/[^A-Za-z]/)) # check if the user has entered a number, if so disallow it. 
       raise ArgumentError, "No numbers, only letters"
     end
     
-    guess=guess.downcase() #change all the letters to lowercase
+    a=a.downcase() #change all the letters to lowercase
     lists=@word.split("") #split words 
     lists.each do |list| # go over the list
-      if(guess==list) # the guess is in the list
+      if(a==list) # the guess is in the list
         @wrong_guesses+=""
-        if(!guesses.include?guess) 
-          @guesses+=guess
+        if(!guesses.include?a) 
+          @guesses+=a
           return true 
         end
       
