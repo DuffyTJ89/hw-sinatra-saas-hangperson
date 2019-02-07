@@ -7,9 +7,10 @@ class HangpersonGame
 
   # def initialize()
   # end
-  
-   attr_accessor :word, :guesses, :wrong_guesses
-  
+ 
+ # takes a parameter and returns a HangpersonGame object
+  attr_accessor :word, :guesses, :wrong_guesses
+   
   def initialize(word)
     
     @word = word
@@ -30,6 +31,7 @@ class HangpersonGame
     }
   end
   
+  #changes correct guess list
   def guess(a)
     
     if (a=='' || a== NIL) #check if an empty word is entered if so disallow it
@@ -48,15 +50,20 @@ class HangpersonGame
         if(!guesses.include?a) 
           @guesses+=a
           return true 
-        end
-      
+        end #end inner if
         return false
-  
       end #end of list check
-      
-      
-    end
+    end #end list.each
     
+    #changes wrong guess list
+    @guesses+= ''
+    if(!@wrong_guesses.include?a)
+      @wrong_guesses+=a
+      return true
+    end #end if
+    return false
   end #end guessing
-
-end
+  
+ 
+  
+end #end game
