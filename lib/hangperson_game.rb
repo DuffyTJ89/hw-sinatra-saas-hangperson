@@ -92,6 +92,28 @@ class HangpersonGame
     return current
   end #end word_with_guesses
   
+  def check_win_or_lose
+    count = 0
+    temps = @word.split("")
+    comps = @guesses.split("")
+    temps.each do |temp|
+      comps.each do|comp|
+      if(comp==temp)
+        count += 1
+        break
+      end #end if
+    end #end loop
+  end #end check_win_or_lose
+  if (@wrong_guesses.length == 7)
+    :lose
+  elsif (temps.length == count)
+    :win
+  else
+    :play
+  end
+  end
+
+  
   
   
 end #end game
