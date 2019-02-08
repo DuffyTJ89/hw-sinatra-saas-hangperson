@@ -34,15 +34,20 @@ class HangpersonGame
   #changes correct guess list
   def guess(a)
     
+    #throws an error when empty
+    #throws an error when nil
     if (a=='' || a== NIL) #check if an empty word is entered if so disallow it
-      raise ArgumentError, "No word entered"
+      raise ArgumentError, "No word entered" #http://rubylearning.com/satishtalim/ruby_exceptions.html
     end #end if
     
+    #throws an error when not a letter
     if (a.match(/[^A-Za-z]/)) # check if the user has entered a number, if so disallow it. 
       raise ArgumentError, "No numbers, only letters"
     end #end if
     
+    #is case insensitive
     a=a.downcase() #change all the letters to lowercase
+    
     lists=@word.split("") #split words 
     lists.each do |list| # go over the list
       if(a==list) # the guess is in the list
@@ -63,6 +68,30 @@ class HangpersonGame
     end #end if
     return false
   end #end guessing
+  
+  def word_with_guesses
+    current= ''
+    var= 0
+    ges=@guesses.split("")
+    temps=@word.split("")
+    temps.each do |temp|
+      ges.each do |a|
+        if(temp == a)
+          current += a
+          var = 1
+        end
+      end
+      if (var == 0)
+        current += '-'
+      end
+      var = 0
+    end
+    #puts "test : " + current #check output in console
+    #should be '------' when guesses are 'def'
+    #should be 'banana' when guesses are 'ban'
+    return current
+  end #end word_with_guesses
+  
   
   
 end #end game
