@@ -36,11 +36,11 @@ class HangpersonGame
     
     if (a=='' || a== NIL) #check if an empty word is entered if so disallow it
       raise ArgumentError, "No word entered"
-    end
+    end #end if
     
     if (a.match(/[^A-Za-z]/)) # check if the user has entered a number, if so disallow it. 
       raise ArgumentError, "No numbers, only letters"
-    end
+    end #end if
     
     a=a.downcase() #change all the letters to lowercase
     lists=@word.split("") #split words 
@@ -59,11 +59,10 @@ class HangpersonGame
     @guesses+= ''
     if(!@wrong_guesses.include?a)
       @wrong_guesses+=a
-      return true
+      return true #returns true
     end #end if
     return false
   end #end guessing
   
- 
   
 end #end game
