@@ -1,4 +1,10 @@
 class HangpersonGame
+  
+  #resources used
+  #http://rubylearning.com/satishtalim/ruby_exceptions.html
+  #https://www.youtube.com/watch?v=yt6s8_1mK6k
+  #https://ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/syntax.html
+  
 
   # add the necessary class methods, attributes, etc. here
   # to make the tests in spec/hangperson_game_spec.rb pass.
@@ -22,7 +28,7 @@ class HangpersonGame
   # You can test it by running $ bundle exec irb -I. -r app.rb
   # And then in the irb: irb(main):001:0> HangpersonGame.get_random_word
   #  => "cooking"   <-- some random word
-  def self.get_random_word
+  def self.get_random_word 
     require 'uri'
     require 'net/http'
     uri = URI('http://watchout4snakes.com/wo4snakes/Random/RandomWord')
@@ -37,7 +43,7 @@ class HangpersonGame
     #throws an error when empty
     #throws an error when nil
     if (a=='' || a== NIL) #check if an empty word is entered if so disallow it
-      raise ArgumentError, "No word entered" #http://rubylearning.com/satishtalim/ruby_exceptions.html
+      raise ArgumentError, "No word entered" 
     end #end if
     
     #throws an error when not a letter
@@ -68,6 +74,7 @@ class HangpersonGame
     end #end if
     return false
   end #end guessing
+  
   
   def word_with_guesses
     current= ''
@@ -104,12 +111,13 @@ class HangpersonGame
       end #end if
     end #end loop
   end #end check_win_or_lose
+  
   if (@wrong_guesses.length == 7)
-    :lose
+    :lose #should be lose after 7 incorrect guesses
   elsif (temps.length == count)
     :win
   else
-    :play
+    :play #should continue play if neither win nor lose
   end
   end
 
